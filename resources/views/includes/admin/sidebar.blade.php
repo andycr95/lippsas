@@ -19,6 +19,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="/admin/hours">
+                <i class="icon-bar-graph menu-icon"></i>
+                <span class="menu-title">Horarios</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="/admin/bookings">
                 <i class="icon-bar-graph menu-icon"></i>
                 <span class="menu-title">Reservas</span>

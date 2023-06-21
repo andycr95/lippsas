@@ -46,4 +46,9 @@ class Client extends Model
     {
         return $this->hasMany(Document::class);
     }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
 }

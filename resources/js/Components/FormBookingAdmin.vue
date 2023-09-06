@@ -1,5 +1,5 @@
 <template>
-    <form method="POST">
+    <form>
         <div class="form-group">
             <label for="exampleInputUsername1">Nombre de encargado</label>
             <input type="text" class="form-control" id="exampleInputUsername1" name="name" required>

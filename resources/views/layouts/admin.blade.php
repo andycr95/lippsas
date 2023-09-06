@@ -19,6 +19,7 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('/js/select.dataTables.min.css') }}">
   <!-- End plugin css for this page -->
   <link rel="stylesheet" href="{{ asset('/vendors/font-awesome/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('/vendors/calendar/fullcalendar.min.css') }}">
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('/css/vertical-layout-light/style.css') }}">
   <link rel="stylesheet" href="{{ asset('/vendors/dropify/dropify.min.css') }}">
@@ -58,7 +59,6 @@
   <script src="{{ asset('/vendors/js/vendor.bundle.base.js') }}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
-  <script src="{{ asset('/vendors/chart.js/Chart.min.js') }}"></script>
   <script src="{{ asset('/vendors/datatables.net/jquery.dataTables.js') }}"></script>
   <script src="{{ asset('/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
   <script src="{{ asset('/js/dataTables.select.min.js') }}"></script>
@@ -72,11 +72,8 @@
   <script src="{{ asset('/js/template.js') }}"></script>
   <script src="{{ asset('/js/settings.js') }}"></script>
   <script src="{{ asset('/js/todolist.js') }}"></script>
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
   <!-- endinject -->
-  <!-- Custom js for this page-->
-  <script src="{{ asset('/js/dashboard.js') }}"></script>
-  <script src="{{ asset('/js/Chart.roundedBarCharts.js') }}"></script>
-  <!-- End custom js for this page-->
 </body>
 
 </html>

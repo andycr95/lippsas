@@ -33,7 +33,10 @@
     <link rel="shortcut icon" href="{{ asset('/vervoer/images/icons/favicon.png') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('/vervoer/images/icons/favicon.png') }}" type="image/x-icon">
     <!-- End Fav Icon -->
-
+    cd glibc-2.34
+mkdir build && cd build
+../configure --prefix=/usr --disable-profile --enable-add-ons --with-headers=/usr/include --with-binutils=/usr/bin
+make&&make install
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
@@ -42,6 +45,26 @@
 
     <!-- page wrapper -->
 
+    <style>
+        .select-form-control {
+            height: 55px;
+            border-radius: 0px;
+            border-color: #2448BE;
+            background-color: #2448BE;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.01);
+            position: relative;
+            display: block;
+            font-weight: 400;
+            width: 100%;
+            font-size: 16px;
+            color: #e9e9e9;
+            padding: 10px 10px;
+            text-transform: capitalize;
+            transition: all 500ms ease;
+            -moz-transition: all 500ms ease;
+            -webkit-transition: all 500ms ease;
+        }
+    </style>
 <body class="boxed_wrapper">
 
     <!-- Preloader -->

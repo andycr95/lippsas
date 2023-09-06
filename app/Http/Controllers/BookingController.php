@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\booking;
 use App\Models\Client;
 use App\Models\Hour;
+use Mail;
 use Illuminate\Http\Request;
+use App\Mail\SendBookingMailClient;
 
 class BookingController extends Controller
 {
@@ -28,6 +30,15 @@ class BookingController extends Controller
     }
 
     /**
+     * Api get all bookings
+     */
+    public function getAll()
+    {
+        $bookings = booking::with(['client', 'hour', 'typeBooking'])->orderBy('date_creation', 'desc')->get();
+        return response()->json($bookings);
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -40,20 +51,17 @@ class BookingController extends Controller
      */
     public function createBooking(Request $request)
     {
-        $client = Client::where('nit', $request->nit)->first();
-        if (!$client) {
-            $client = new Client();
-            $client->name = $request->name_company;
-            $client->nit = $request->nit;
-            $client->email = $request->email;
-            $client->phone = $request->phone;
-            $client->save();
-        }
         $booking = new booking();
         $booking->hour_id = $request->hour_id;
-        $booking->client_id = $client->id;
+        $booking->client_id = $request->client_id;
         $booking->date_creation = $request->date;
+        $booking->plate = $request->plate;
+        $booking->type_booking_id = $request->type;
+        $booking->description = $request->description;
+        $client = Client::find($request->client_id);
         $booking->save();
+
+        Mail::to('andy.caicedo@sigma7.com.co', 'Sigma')->send(new SendBookingMailClient($client, $booking));
 
         return response()->json([
             'message' => 'Booking created successfully',

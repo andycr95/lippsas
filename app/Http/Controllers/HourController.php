@@ -21,18 +21,48 @@ class HourController extends Controller
      */
     public function getAll()
     {
-        $hours = Hour::with('bookings')->get();
+        $date = date('Y-m-d');
+        $hours = Hour::with(['bookings' => function ($query) use ($date) {
+            $query->where('date_creation','>=', $date);
+        }])->get();
+        for ($i=0; $i < count($hours); $i++) { 
+            if($hours[$i]->state == 'false' && $hours[$i]->date >= $date){
+                $hours[$i]->state = 'true';
+                $hours[$i]->date = null;
+                $hours[$i]->time = null;
+                $hours[$i]->save();
+            } elseif($hours[$i]->state == 'true'){
+                $hours[$i]->date = null;
+                $hours[$i]->time = null;
+                $hours[$i]->save();
+            }
+        }
         return response()->json($hours);
     }
 
     /**
      * Get all with bookings of the day recived by parameter
      */
-    public function getAllWithBookingsOfTheDay($date)
+    public function getAllWithBookingsOfTheDay(Request $request)
     {
-        $hours = Hour::with(['bookings' => function ($query) use ($date) {
-            $query->where('created_at', $date);
+        $date = $request->query('date');
+        $type = $request->query('type');
+        $today = date('Y-m-d');
+        $hours = Hour::where('state', 'true')->with(['bookings' => function ($query) use ($date, $type) {
+            $query->where('date_creation', $date)->where('type_booking_id', $type);
         }])->get();
+        for ($i=0; $i < count($hours); $i++) { 
+            if($hours[$i]->state == 'false' && $hours[$i]->date >= $today){
+                $hours[$i]->state = 'true';
+                $hours[$i]->date = null;
+                $hours[$i]->time = null;
+                $hours[$i]->save();
+            } elseif($hours[$i]->state == 'true'){
+                $hours[$i]->date = null;
+                $hours[$i]->time = null;
+                $hours[$i]->save();
+            }
+        }
         return response()->json($hours);
     }
 
@@ -77,7 +107,15 @@ class HourController extends Controller
      */
     public function update(Request $request, Hour $hour)
     {
-        //
+        // Update the hour
+        $hour = Hour::findOrFail($request->id);
+        $hour->state = $request->input('state');
+        if ($request->input('state') == false) {
+            $hour->time = $request->input('time');
+            $hour->date = $request->input('date');
+        }
+        $hour->save();
+        return response()->json($hour);
     }
 
     /**

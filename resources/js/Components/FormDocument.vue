@@ -1,6 +1,6 @@
 <template>
     <div class="tracking-number-search">
-        <pulse-loader style="position: absolute;z-index: 1;top: 50%;left: 40%;" :loading="loading_submit" :size="50"></pulse-loader>
+        <pulse-loader style="position: absolute;z-index: 1;top: 50%;left: 40%;" :loading="loading_submit" size="50"></pulse-loader>
         <div v-if="loading_submit" class="overlay"></div>
         <strong>NIT :</strong>
         <input type="text" v-model="nit" placeholder="Nit">

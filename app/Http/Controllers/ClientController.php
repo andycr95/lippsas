@@ -38,6 +38,14 @@ class ClientController extends Controller
     }
 
     /**
+     * get all active clients
+     */
+    public function getAll(){
+        $clients = Client::where('is_active', true)->get();
+        return response()->json($clients);
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreClientRequest $request): RedirectResponse

@@ -30,4 +30,10 @@ class Booking extends Model
     {
         return $this->belongsTo(Client::class);
     }
+
+    //Define the relationship with the type of bookings
+    public function typeBooking()
+    {
+        return $this->belongsTo(TypeBooking::class, 'type_booking_id');
+    }
 }

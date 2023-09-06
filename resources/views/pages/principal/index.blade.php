@@ -11,7 +11,7 @@
             <div class="content-wrapper">
                 <div class="hidden-sidebar-close"><i class="flaticon-cross"></i></div>
                 <div class="text-widget mb_30">
-                    <div class="logo"><a href="index.html"><img src="{{ asset('/vervoer/images/logo.svg') }}" alt=""></a></div>
+                    <div class="logo"><a href="index.html"><img src="{{ asset('/vervoer/images/logo_b.png') }}" alt=""></a></div>
                     <div class="text">Demoralized by the charms of pleasure of the moment so blinded by desire that
                         they cannot foresees the pain.</div>
                 </div>

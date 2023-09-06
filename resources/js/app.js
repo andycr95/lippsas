@@ -3,6 +3,9 @@ import { createApp } from 'vue'
 import HelloWorld from '@/components/HelloWorld.vue'
 import FormBookingAdmin from '@/components/FormBookingAdmin.vue'
 import FormDocument from '@/components/FormDocument.vue'
+import TypeBooking from '@/components/TypeBooking.vue'
+import Calendar from '@/components/Calendar.vue'
+import HoursComponent from '@/components/HoursComponent.vue'
 
 window.app = createApp({
     setup() {
@@ -13,6 +16,9 @@ window.app = createApp({
     components: {
         HelloWorld,
         FormBookingAdmin,
-        FormDocument
+        FormDocument,
+        TypeBooking,
+        Calendar,
+        HoursComponent
     },
 }).mount('#app');

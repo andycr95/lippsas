@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HourController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ConfigController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +25,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/hours', [HourController::class, 'getAll']);
-Route::get('/hours/withBookingsOfTheDay/{date}', [HourController::class, 'getAllWithBookingsOfTheDay']);
+Route::get('/hours/withBookingsOfTheDay', [HourController::class, 'getAllWithBookingsOfTheDay']);
+Route::put('/hours/{id}', [HourController::class, 'update']);
 
+Route::get('/bookings', [BookingController::class, 'getAll']);
 Route::post('/bookings', [BookingController::class, 'createBooking']);
 
 Route::get('/documents/download/{id}', [DocumentController::class, 'download']);
 Route::get('/documents/{nit}', [DocumentController::class, 'getDocumentsByClientNit']);
+
+Route::get('/type-booking', [ConfigController::class, 'getAllTypeBooking']);
+Route::post('/type-booking', [ConfigController::class, 'createTypeBooking']);
+
+Route::get('/clients', [ClientController::class, 'getAll']);

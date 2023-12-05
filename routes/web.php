@@ -42,40 +42,40 @@ use App\Models\Hour;
     Route::group(['prefix' => 'admin'], function () {
 
         //Client routes
-        Route::get('/', [ClientController::class, 'index'])->name('admin.clients.index');
-        Route::get('/clients/create', [ClientController::class, 'create'])->name('admin.clients.create');
-        Route::post('/clients', [ClientController::class, 'store'])->name('admin.clients.store');
-        Route::delete('/clients/{client}', [ClientController::class, 'destroy'])->name('admin.clients.destroy');
-        Route::get('/clients/{client}', [ClientController::class, 'show'])->name('admin.clients.show');
-        Route::put('/clients/{client}', [ClientController::class, 'update'])->name('admin.clients.update');
+        Route::get('/', [ClientController::class, 'index'])->name('admin.clients.index')->middleware(['auth']);
+        Route::get('/clients/create', [ClientController::class, 'create'])->name('admin.clients.create')->middleware(['auth']);
+        Route::post('/clients', [ClientController::class, 'store'])->name('admin.clients.store')->middleware(['auth']);
+        Route::delete('/clients/{client}', [ClientController::class, 'destroy'])->name('admin.clients.destroy')->middleware(['auth']);
+        Route::get('/clients/{client}', [ClientController::class, 'show'])->name('admin.clients.show')->middleware(['auth']);
+        Route::put('/clients/{client}', [ClientController::class, 'update'])->name('admin.clients.update')->middleware(['auth']);
 
         //Document routes
-        Route::get('/documents', [DocumentController::class, 'index'])->name('admin.documents.index');
-        Route::get('/documents/create', [DocumentController::class, 'create'])->name('admin.documents.create');
-        Route::get('/documents/download/{id}', [DocumentController::class, 'download'])->name('admin.documents.download');
-        Route::get('/documents/{id}', [DocumentController::class, 'show'])->name('admin.documents.show');
-        Route::put('/documents/{id}', [DocumentController::class, 'update'])->name('admin.documents.update');
-        Route::post('/documents', [DocumentController::class, 'store'])->name('admin.documents.store');
-        Route::delete('/documents/{document}', [DocumentController::class, 'destroy'])->name('admin.documents.destroy');
+        Route::get('/documents', [DocumentController::class, 'index'])->name('admin.documents.index')->middleware(['auth']);
+        Route::get('/documents/create', [DocumentController::class, 'create'])->name('admin.documents.create')->middleware(['auth']);
+        Route::get('/documents/download/{id}', [DocumentController::class, 'download'])->name('admin.documents.download')->middleware(['auth']);
+        Route::get('/documents/{id}', [DocumentController::class, 'show'])->name('admin.documents.show')->middleware(['auth']);
+        Route::put('/documents/{id}', [DocumentController::class, 'update'])->name('admin.documents.update')->middleware(['auth']);
+        Route::post('/documents', [DocumentController::class, 'store'])->name('admin.documents.store')->middleware(['auth']);
+        Route::delete('/documents/{document}', [DocumentController::class, 'destroy'])->name('admin.documents.destroy')->middleware(['auth']);
 
         //Booking routes
-        Route::get('/bookings', [BookingController::class, 'index'])->name('admin.bookings.index');
-        Route::get('/bookings/create', [BookingController::class, 'create'])->name('admin.bookings.create');
-        Route::post('/bookings', [BookingController::class, 'store'])->name('admin.bookings.store');
-        Route::delete('/bookings/{booking}', [BookingController::class, 'destroy'])->name('admin.bookings.destroy');
+        Route::get('/bookings', [BookingController::class, 'index'])->name('admin.bookings.index')->middleware(['auth']);
+        Route::get('/bookings/create', [BookingController::class, 'create'])->name('admin.bookings.create')->middleware(['auth']);
+        Route::post('/bookings', [BookingController::class, 'store'])->name('admin.bookings.store')->middleware(['auth']);
+        Route::delete('/bookings/{booking}', [BookingController::class, 'destroy'])->name('admin.bookings.destroy')->middleware(['auth']);
 
         //Hour routes
-        Route::get('/hours', [HourController::class, 'index'])->name('admin.hours.index');
-        Route::get('/hours/create', [HourController::class, 'create'])->name('admin.hours.create');
-        Route::post('/hours', [HourController::class, 'store'])->name('admin.hours.store');
-        Route::delete('/hours/{hour}', [HourController::class, 'destroy'])->name('admin.hours.destroy');
-        Route::get('/hours/{hour}', [HourController::class, 'show'])->name('admin.hours.show');
+        Route::get('/hours', [HourController::class, 'index'])->name('admin.hours.index')->middleware(['auth']);
+        Route::get('/hours/create', [HourController::class, 'create'])->name('admin.hours.create')->middleware(['auth']);
+        Route::post('/hours', [HourController::class, 'store'])->name('admin.hours.store')->middleware(['auth']);
+        Route::delete('/hours/{hour}', [HourController::class, 'destroy'])->name('admin.hours.destroy')->middleware(['auth']);
+        Route::get('/hours/{hour}', [HourController::class, 'show'])->name('admin.hours.show')->middleware(['auth']);
 
         //Config routes
-        Route::get('/configs', [ConfigController::class, 'index'])->name('admin.configs.index');
+        Route::get('/configs', [ConfigController::class, 'index'])->name('admin.configs.index')->middleware(['auth']);
 
 
-    })->middleware(['auth'])->name('admin');
+    });
 
 
 require __DIR__.'/auth.php';
